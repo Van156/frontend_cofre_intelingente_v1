@@ -1,0 +1,28 @@
+.checkItems {
+    font-family: sans-serif;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  }
+  .title {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 20px;
+  }
+  .checked-item,
+  .not-checked-item {
+    margin-left: 10px;
+  }
+  .checked-item {
+    text-decoration: line-through;
+  }
