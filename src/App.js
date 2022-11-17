@@ -20,7 +20,7 @@ function App() {
     <Auth0Provider
       domain="proyecto-final-electronica.us.auth0.com"
       clientId="ix6zap0dG5QN7YkmT0unSL0tZH7A8oPk"
-      redirectUri="http://localhost:3000/admin"
+      redirectUri="https://fierce-oasis-98176.herokuapp.com/admin"
       audience="api-cofre-inteligente-administracion-llaves"
     >
       <div className="">
