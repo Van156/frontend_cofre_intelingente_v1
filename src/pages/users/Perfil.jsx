@@ -22,6 +22,7 @@ const Perfil = () => {
         user_name: userData.name,
         user_picture: userData.picture,
         estado: "Sin gestionar",
+        user_email: userData.email,
         llaves_pedidas: checked,
       };
     } else if (option === 2) {
@@ -32,6 +33,7 @@ const Perfil = () => {
         user_name: userData.name,
         user_picture: userData.picture,
         estado: "Sin gestionar",
+        user_email: userData.email,
         new_password: inputRef.current.value,
       };
     } else if (option === 3) {
@@ -44,6 +46,7 @@ const Perfil = () => {
         estado: "Sin gestionar",
         new_password: inputRef2.current.value,
         new_password_coacción: inputRef3.current.value,
+        user_email: userData.email,
       };
     }
 
