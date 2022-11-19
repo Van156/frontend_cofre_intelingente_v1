@@ -40,7 +40,7 @@ const SideBar = () => {
       ? "flex items-center px-4 py-2 text-gray-700 bg-gray-100 dark:bg-gray-800 dark:text-gray-200"
       : "flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 dark:hover:text-gray-200 hover:text-gray-700";
   const cerrarSesion = () => {
-    logout({ returnTo: "http://localhost:3000" });
+    logout({ returnTo: "https://fierce-oasis-98176.herokuapp.com" });
     localStorage.setItem("token", null);
   };
   return (
