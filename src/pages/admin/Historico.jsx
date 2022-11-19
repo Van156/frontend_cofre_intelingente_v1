@@ -248,7 +248,7 @@ const Historico = () => {
                   name=""
                   id=""
                   onChange={changeHandle}
-                  placeholder="Buscar por nombre o correo"
+                  placeholder="Buscar por llave"
                 />
               </div>
             </div>
