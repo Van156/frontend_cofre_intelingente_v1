@@ -8,7 +8,7 @@ const NavBar = () => {
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <a href="#" className="flex items-center">
           <img
-            src="./logo2.PNG"
+            src="https://blogger.googleusercontent.com/img/a/AVvXsEhuhpWVv2rmxIYVNzOgijz_3fkJf44673zo81nKxqq9b5OxxoQyc8JzNgBi0wh3thwe0omoBSfRqTbF-RhRrqU5CSS9U1JTtcJ7fJIMFj9LP4G7gFRErOvEzfXAC-WqjYja3S-z3aOw7IIQIRbXZFx0QVcSlkrTkcEzCjlfiOZ0XUB0wPvEqWr88Ek34Q"
             className="  mr-3 h-6 sm:h-9"
             alt="Waneeshia logo"
           />
