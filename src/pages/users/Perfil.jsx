@@ -4,7 +4,7 @@ import { useUser } from "../../context/userContext";
 import { crearSolicitud } from "../../utils/api";
 const Perfil = () => {
   const { userData } = useUser();
-  console.log("user Data", userData);
+
   const [showModal, setShowModal] = useState(false);
   const [selection, setSelection] = useState(4);
   const [usuario, setUsuario] = useState(userData);
@@ -13,8 +13,6 @@ const Perfil = () => {
   const inputRef3 = useRef(null);
   const closeModal = (option) => {
     setShowModal((currShowModal) => false);
-    console.log("showModal close", showModal);
-    console.log("Solicitude realizada", option);
 
     if (option === 1) {
       var datosSolicitud = {
@@ -37,8 +35,6 @@ const Perfil = () => {
         new_password: inputRef.current.value,
       };
     } else if (option === 3) {
-      console.log("Estoy ppp");
-      console.log("Estoy aqui ,...", inputRef2.current.value);
       var datosSolicitud = {
         user_id: userData._id,
         tipo: "Nueva contraseña",
@@ -54,12 +50,8 @@ const Perfil = () => {
     const createSolicitud = async () => {
       await crearSolicitud(
         datosSolicitud,
-        (response) => {
-          console.log(response);
-        },
-        (error) => {
-          console.error(error);
-        }
+        (response) => {},
+        (error) => {}
       );
     };
     if (option === 1 || option === 2 || option === 3) {
@@ -87,14 +79,11 @@ const Perfil = () => {
   const handleCheck = (event) => {
     var updatedList = [...checked];
     if (event.target.checked) {
-      console.log("El estado es ", event.target.checked);
       updatedList = [...checked, event.target.value];
     } else {
       updatedList.splice(checked.indexOf(event.target.value), 1);
-      console.log("El estado es ", event.target.checked);
     }
     setChecked(updatedList);
-    console.log("checked", checked);
   };
   // Generate string of checked items
   const checkedItems = checked.length

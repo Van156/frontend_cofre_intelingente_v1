@@ -25,16 +25,14 @@ const PrivateLayout = ({ children }) => {
       });
       // 2. recibir token de auth0
       localStorage.setItem("token", accessToken);
-      console.log(accessToken);
+
       // 3. enviarle el token a el backend
       await obtenerDatosUsuario(
         (response) => {
-          console.log("response con datos del usuario", response);
           setUserData(response.data);
           setLoadingUserInformation(false);
         },
         (err) => {
-          console.log("err", err);
           setLoadingUserInformation(false);
           logout({ returnTo: "http://localhost:3000" });
         }
@@ -52,7 +50,6 @@ const PrivateLayout = ({ children }) => {
 
   if (!isAuthenticated) {
     // return loginWithRedirect();
-    console.log("no autenticado problemas");
   }
 
   return (

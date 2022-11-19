@@ -15,9 +15,8 @@ const Solicitudes = () => {
 
   const closeModal = (option) => {
     setShowModal((currShowModal) => false);
-    console.log("showModal close ahora ", showModal);
+
     const editSolicitud = async (estado) => {
-      console.log("Fue llamada solicitud");
       await editarSolicitud(
         solicitud._id,
         { estado },
@@ -29,7 +28,7 @@ const Solicitudes = () => {
     };
     if (option === 1) {
       editSolicitud("Aprobada");
-      console.log("Entro en option 1");
+
       if (solicitud.tipo === "Cambiar contraseña") {
         const editUsuario = async (password) => {
           await editarUsuario(
@@ -64,8 +63,6 @@ const Solicitudes = () => {
           await obtenerUsuario(
             solicitud.user_id,
             (res) => {
-              console.log("data usuario", res.data);
-              // setUsuario(res.data);
               const keyaccess = [
                 ...new Set([
                   ...res.data.keyaccess,
@@ -74,16 +71,13 @@ const Solicitudes = () => {
               ];
               editUsuario(keyaccess);
             },
-            (err) => {
-              console.log("error", err);
-            }
+            (err) => {}
           );
         };
         getUsuario();
       }
     } else {
       editSolicitud("Denegada");
-      console.log("Entro en option denegada");
     }
 
     const fetchSolicitudes = async () => {
@@ -94,7 +88,6 @@ const Solicitudes = () => {
           setLoadingUserInformation(false);
         },
         (err) => {
-          console.log(err);
           setLoadingUserInformation(false);
         }
       );
@@ -109,7 +102,6 @@ const Solicitudes = () => {
     setSolicitud(solicitud);
 
     setShowModal((currShowModal) => true);
-    console.log("showModal open", showModal);
   };
 
   useEffect(() => {
@@ -117,13 +109,11 @@ const Solicitudes = () => {
     const fetchSolicitudes = async () => {
       await obtenerSolicitudes(
         (resp) => {
-          console.log("solicitudes", resp.data);
           setSolicitudes(resp.data);
           setFilterSolicitud(resp.data);
           setLoadingUserInformation(false);
         },
         (err) => {
-          console.log(err);
           setLoadingUserInformation(false);
         }
       );
@@ -135,13 +125,11 @@ const Solicitudes = () => {
     const fetchSolicitudes = async () => {
       await obtenerSolicitudes(
         (resp) => {
-          console.log("solicitudes", resp.data);
           setSolicitudes(resp.data);
           setFilterSolicitud(resp.data);
           setLoadingUserInformation(false);
         },
         (err) => {
-          console.log(err);
           setLoadingUserInformation(false);
         }
       );
@@ -164,7 +152,6 @@ const Solicitudes = () => {
   // }, [solicitudes]);
 
   const changeHandle = (e) => {
-    console.log("las solicitudes son", solicitudes);
     setFilterSolicitud(
       solicitudes.filter(
         (usuario) =>
@@ -413,34 +400,5 @@ const Keys = ({ keys }) => {
     </div>
   );
 };
-// const getKeys = ({ keyaccess, showModal }) => {
-//   const [keys, setKeys] = useState([keyaccess]);
 
-//   const [show, setShow] = useState(false);
-
-//   useEffect(() => {
-//     setShow(true);
-//     console.log("llaves actuales", keys);
-//   }, [keys]);
-
-//   return (
-//     <div>
-//       <div>
-//         {show ? (
-//           <ul>
-//             {keys[0].length >= 1 ? (
-//               keys[0].map((key) => {
-//                 return <li className="inline-block">{key},</li>;
-//               })
-//             ) : (
-//               <li>añadir</li>
-//             )}
-//           </ul>
-//         ) : (
-//           <></>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
 export default Solicitudes;

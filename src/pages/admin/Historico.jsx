@@ -18,7 +18,7 @@ const Historico = () => {
   };
   const closeModal = (option) => {
     setShowModal((currShowModal) => false);
-    console.log("showModal close", showModal);
+
     if (option === 1) {
       const editHistorico = async (accion, accion_tomada) => {
         await editarHistorico(
@@ -68,7 +68,6 @@ const Historico = () => {
     setHistorico(historico);
 
     setShowModal((currShowModal) => true);
-    console.log("showModal open", showModal);
   };
 
   useEffect(() => {
@@ -76,13 +75,11 @@ const Historico = () => {
       setLoadingUserInformation(true);
       await obtenerHistoricos(
         (resp) => {
-          console.log("Historicos", resp.data);
           setHistoricos(resp.data);
           setFilterHistoricos(resp.data);
           setLoadingUserInformation(false);
         },
         (err) => {
-          console.log(err);
           setLoadingUserInformation(false);
         }
       );
@@ -95,13 +92,11 @@ const Historico = () => {
       setLoadingUserInformation(true);
       await obtenerHistoricos(
         (resp) => {
-          console.log("Historicos", resp.data);
           setHistoricos(resp.data);
           setFilterHistoricos(resp.data);
           setLoadingUserInformation(false);
         },
         (err) => {
-          console.log(err);
           setLoadingUserInformation(false);
         }
       );
@@ -120,7 +115,6 @@ const Historico = () => {
           "absolute inset-0 bg-green-200 opacity-50 rounded-full",
         ];
   const changeHandle = (e) => {
-    console.log(historicos);
     if (["1", "2", "3", "4"].includes(e.target.value.toString())) {
       setFilterHistoricos(
         historicos.filter(

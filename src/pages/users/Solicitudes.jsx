@@ -19,7 +19,6 @@ const Solicitudes = () => {
     const fetchSolicitudes = async () => {
       await obtenerSolicitudes(
         (resp) => {
-          console.log("solicitudes", resp.data);
           setSolicitudes(
             resp.data.filter(
               (solicitud) => solicitud.user_email === userData.email
@@ -33,7 +32,6 @@ const Solicitudes = () => {
           setLoadingUserInformation(false);
         },
         (err) => {
-          console.log(err);
           setLoadingUserInformation(false);
         }
       );
@@ -56,7 +54,6 @@ const Solicitudes = () => {
   // }, [solicitudes]);
 
   const changeHandle = (e) => {
-    console.log("las solicitudes son", solicitudes);
     setFilterSolicitud(
       solicitudes.filter(
         (usuario) =>
@@ -200,34 +197,5 @@ const Keys = ({ keys }) => {
     </div>
   );
 };
-// const getKeys = ({ keyaccess, showModal }) => {
-//   const [keys, setKeys] = useState([keyaccess]);
 
-//   const [show, setShow] = useState(false);
-
-//   useEffect(() => {
-//     setShow(true);
-//     console.log("llaves actuales", keys);
-//   }, [keys]);
-
-//   return (
-//     <div>
-//       <div>
-//         {show ? (
-//           <ul>
-//             {keys[0].length >= 1 ? (
-//               keys[0].map((key) => {
-//                 return <li className="inline-block">{key},</li>;
-//               })
-//             ) : (
-//               <li>añadir</li>
-//             )}
-//           </ul>
-//         ) : (
-//           <></>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
 export default Solicitudes;

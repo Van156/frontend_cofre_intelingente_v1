@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 const SideBar = () => {
   const { user, logout } = useAuth0();
-  console.log("link to user picture", user.picture);
+
   const [selected, setSelected] = useState([
     true,
     false,
@@ -20,7 +20,6 @@ const SideBar = () => {
 
   //Definir selección
   const updateSelected = (option) => {
-    console.log(option, "option");
     let activeSelected = [
       false,
       false,

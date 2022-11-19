@@ -12,7 +12,7 @@ const Usuarios = () => {
   const [filterUser, setFilterUser] = useState([]);
   const closeModal = (option) => {
     setShowModal((currShowModal) => false);
-    console.log("showModal close", showModal);
+
     if (option === 1) {
       const editUsuario = async (keyaccess) => {
         await editarUsuario(
@@ -32,11 +32,10 @@ const Usuarios = () => {
 
   const openModal = (user) => {
     setUsuario(user);
-    console.log("user data keyaccess", user.keyaccess);
+
     setChecked(user.keyaccess);
 
     setShowModal((currShowModal) => true);
-    console.log("showModal open", showModal);
   };
 
   useEffect(() => {
@@ -58,7 +57,6 @@ const Usuarios = () => {
           setLoadingUserInformation(false);
         },
         (err) => {
-          console.log(err);
           setLoadingUserInformation(false);
         }
       );
@@ -84,7 +82,6 @@ const Usuarios = () => {
           setLoadingUserInformation(false);
         },
         (err) => {
-          console.log(err);
           setLoadingUserInformation(false);
         }
       );
@@ -100,14 +97,11 @@ const Usuarios = () => {
   const handleCheck = (event) => {
     var updatedList = [...checked];
     if (event.target.checked) {
-      console.log("El estado es ", event.target.checked);
       updatedList = [...checked, event.target.value];
     } else {
       updatedList.splice(checked.indexOf(event.target.value), 1);
-      console.log("El estado es ", event.target.checked);
     }
     setChecked(updatedList);
-    console.log("checked", checked);
   };
   // Generate string of checked items
   const checkedItems = checked.length
@@ -124,7 +118,7 @@ const Usuarios = () => {
   const [busqueda, setBusqueda] = useState("");
   const changeHandle = (e) => {
     setBusqueda(e.target.value);
-    console.log("usuarios", usuarios);
+
     setFilterUser(
       usuarios.filter(
         (usuario) =>
@@ -415,7 +409,6 @@ const EditKeyAccess = ({ user, showModal }) => {
 
   useEffect(() => {
     setShow(true);
-    console.log("llaves actuales", keys);
   }, [keys]);
 
   return (

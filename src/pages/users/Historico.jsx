@@ -22,7 +22,6 @@ const Historico = () => {
       setLoadingUserInformation(true);
       await obtenerHistoricos(
         (resp) => {
-          console.log("Historicos", resp.data);
           setHistoricos(
             resp.data.filter(
               (historico) => historico.user_email === userData.email
@@ -31,7 +30,6 @@ const Historico = () => {
           setLoadingUserInformation(false);
         },
         (err) => {
-          console.log(err);
           setLoadingUserInformation(false);
         }
       );

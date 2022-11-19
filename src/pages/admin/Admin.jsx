@@ -30,7 +30,6 @@ const Admin = () => {
       setLoadingUserInformation(true);
       await obtenerHistoricos(
         (resp) => {
-          console.log("Historicos", resp.data);
           setHistoricos(resp.data);
           let llaves_tomadas = resp.data.map(
             (historico) => historico.llaves_tomada
@@ -38,10 +37,9 @@ const Admin = () => {
           let usuarios = Array.from(
             new Set(resp.data.map((historico) => historico.user_name))
           );
-          console.log("usuarios unicos", usuarios);
+
           setEstadoActual(resp.data[0].llaves_despues);
 
-          console.log("Llaves", llaves_tomadas);
           let cantidadesIngreso = [];
           for (var i = 0; i < usuarios.length; i++) {
             cantidadesIngreso.push({
@@ -122,7 +120,6 @@ const Admin = () => {
             usuarioLlave[3] = usuarioLlave[3].user_name;
           }
 
-          console.log("usuarioLlave", usuarioLlave);
           setDataUltima([
             {
               llave: "1",
@@ -146,7 +143,7 @@ const Admin = () => {
             { name: "Realizada", value: cantidadesAcciones[1] },
             { name: "Requerida", value: cantidadesAcciones[2] },
           ]);
-          console.log("Cantidad de las acciones", cantidadesAcciones);
+
           setDataLlaves([
             {
               name: "1",
@@ -165,13 +162,11 @@ const Admin = () => {
               Cantidad_de_veces_usada: cantidades[3],
             },
           ]);
-          console.log("Cantidad de veces que se repite", cantidades);
-          // console.log("Usuarios de la pagina", usuarios);
+
           setLoadingUserInformation(false);
         },
 
         (err) => {
-          console.log(err);
           setLoadingUserInformation(false);
         }
       );
@@ -182,14 +177,14 @@ const Admin = () => {
   const [valueSelect, setValueSelect] = useState("");
   const handleSelect = (e) => {
     setValueSelect(e.target.value);
-    console.log(e.target.value);
+
     let resp = {
       data: historicos.filter(
         (historico) =>
           new Date(historico.fecha).getMonth() === parseInt(e.target.value) - 1
       ),
     };
-    console.log("Res", resp);
+
     if (resp.data.length > 0) {
       let llaves_tomadas = resp.data.map(
         (historico) => historico.llaves_tomada
@@ -197,9 +192,6 @@ const Admin = () => {
       let usuarios = Array.from(
         new Set(resp.data.map((historico) => historico.user_name))
       );
-      console.log("usuarios unicos", usuarios);
-
-      console.log("Llaves", llaves_tomadas);
 
       let cantidadesIngreso = [];
       for (var i = 0; i < usuarios.length; i++) {
@@ -279,7 +271,6 @@ const Admin = () => {
         usuarioLlave[3] = usuarioLlave[3].user_name;
       }
 
-      console.log("usuarioLlave", usuarioLlave);
       setDataUltima([
         {
           llave: "1",
@@ -303,7 +294,7 @@ const Admin = () => {
         { name: "Realizada", value: cantidadesAcciones[1] },
         { name: "Requerida", value: cantidadesAcciones[2] },
       ]);
-      console.log("Cantidad de las acciones", cantidadesAcciones);
+
       setDataLlaves([
         {
           name: "1",
@@ -322,8 +313,7 @@ const Admin = () => {
           Cantidad_de_veces_usada: cantidades[3],
         },
       ]);
-      console.log("Cantidad de veces que se repite", cantidades);
-      // console.log("Usuarios de la pagina", usuarios)
+
       setIsValid(true);
     } else {
       setIsValid(false);
