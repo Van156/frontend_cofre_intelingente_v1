@@ -26,3 +26,27 @@
   .checked-item {
     text-decoration: line-through;
   }
+
+.hero1{
+  background-image: url("./../public/hero.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  position: relative;
+  margin-bottom: 2rem;
+}
+.hero2 {
+  background-image: url("./../public/hero.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.centrar-1{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+} 

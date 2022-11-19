@@ -6,6 +6,7 @@ import { editarUsuario } from "../../utils/api";
 import ReactLoading from "react-loading";
 const Historico = () => {
   const [historicos, setHistoricos] = useState([]);
+  const [filterHistoricos, setFilterHistoricos] = useState([]);
   const [historico, setHistorico] = useState();
   const [showModal, setShowModal] = useState(false);
   const [usuario, setUsuario] = useState();
@@ -45,12 +46,23 @@ const Historico = () => {
         (historico.user_faltas_leve + 1) +
         " faltas leves";
       editHistorico("Realizada", accionTomada);
-    } else {
+    } else if (option === 2) {
+      const editUsuario = async (rol, estado) => {
+        await editarUsuario(
+          historico.user_id,
+          { rol, estado },
+          (res) => {},
+          (err) => {
+            console.error(err);
+          }
+        );
+      };
+      editUsuario("sin rol", "pendiente");
     }
   };
-  useEffect(() => {
-    setLoadingUserInformation(false);
-  }, [historicos]);
+  // useEffect(() => {
+  //   setLoadingUserInformation(false);
+  // }, [historicos]);
 
   const openModal = (historico) => {
     setHistorico(historico);
@@ -66,6 +78,26 @@ const Historico = () => {
         (resp) => {
           console.log("Historicos", resp.data);
           setHistoricos(resp.data);
+          setFilterHistoricos(resp.data);
+          setLoadingUserInformation(false);
+        },
+        (err) => {
+          console.log(err);
+          setLoadingUserInformation(false);
+        }
+      );
+    };
+    fetchHistoricos();
+  }, [showModal]);
+
+  useEffect(() => {
+    const fetchHistoricos = async () => {
+      setLoadingUserInformation(true);
+      await obtenerHistoricos(
+        (resp) => {
+          console.log("Historicos", resp.data);
+          setHistoricos(resp.data);
+          setFilterHistoricos(resp.data);
           setLoadingUserInformation(false);
         },
         (err) => {
@@ -87,6 +119,21 @@ const Historico = () => {
           "relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight",
           "absolute inset-0 bg-green-200 opacity-50 rounded-full",
         ];
+  const changeHandle = (e) => {
+    console.log(historicos);
+    if (["1", "2", "3", "4"].includes(e.target.value.toString())) {
+      setFilterHistoricos(
+        historicos.filter(
+          (usuario) =>
+            usuario.llaves_regresadas.includes(e.target.value.toString()) ||
+            usuario.llaves_tomada.includes(e.target.value.toString())
+        )
+      );
+    } else {
+      setFilterHistoricos(historicos);
+    }
+  };
+
   return (
     <div>
       {showModal ? (
@@ -196,11 +243,12 @@ const Historico = () => {
                   />
                 </svg>
                 <input
-                  class="bg-gray-50 outline-none ml-1 block "
+                  class="bg-gray-50 outline-none  w-64 ml-1 block "
                   type="text"
                   name=""
                   id=""
-                  placeholder="Buscar..."
+                  onChange={changeHandle}
+                  placeholder="Buscar por nombre o correo"
                 />
               </div>
             </div>
@@ -233,7 +281,7 @@ const Historico = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {historicos.map((historico) => {
+                      {filterHistoricos.map((historico) => {
                         return (
                           <tr>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -304,21 +352,6 @@ const Historico = () => {
                       })}
                     </tbody>
                   </table>
-
-                  <div class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
-                    <span class="text-xs xs:text-sm text-gray-900">
-                      Showing 1 to 4 of 50 Entries
-                    </span>
-                    <div class="inline-flex mt-2 xs:mt-0">
-                      <button class="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l">
-                        Prev
-                      </button>
-                      &nbsp; &nbsp;
-                      <button class="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r">
-                        Next
-                      </button>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

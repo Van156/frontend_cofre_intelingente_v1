@@ -40,11 +40,6 @@ const Admin = () => {
           );
           console.log("usuarios unicos", usuarios);
           setEstadoActual(resp.data[0].llaves_despues);
-          // let usuarios = resp.data.map((historico) => historico.user_name).reduce((a,e)=> {
-
-          //  if( a.find(d=>d==e)
-
-          // },[]);
 
           console.log("Llaves", llaves_tomadas);
           let cantidadesIngreso = [];
@@ -59,10 +54,14 @@ const Admin = () => {
                   (historico) => historico.user_name === usuarios[i]
                 ).length -
                 resp.data.filter(
-                  (historico) => historico.accion === "No Requerida"
+                  (historico) =>
+                    historico.user_name === usuarios[i] &&
+                    historico.accion === "No Requerida"
                 ).length,
               alarma: resp.data.filter(
-                (historico) => historico.alarma === "Activada"
+                (historico) =>
+                  historico.user_name === usuarios[i] &&
+                  historico.alarma === "Activada"
               ).length,
             });
           }
@@ -200,12 +199,6 @@ const Admin = () => {
       );
       console.log("usuarios unicos", usuarios);
 
-      // let usuarios = resp.data.map((historico) => historico.user_name).reduce((a,e)=> {
-
-      //  if( a.find(d=>d==e)
-
-      // },[]);
-
       console.log("Llaves", llaves_tomadas);
 
       let cantidadesIngreso = [];
@@ -218,10 +211,15 @@ const Admin = () => {
           incidente:
             resp.data.filter((historico) => historico.user_name === usuarios[i])
               .length -
-            resp.data.filter((historico) => historico.accion === "No Requerida")
-              .length,
+            resp.data.filter(
+              (historico) =>
+                historico.user_name === usuarios[i] &&
+                historico.accion === "No Requerida"
+            ).length,
           alarma: resp.data.filter(
-            (historico) => historico.alarma === "Activada"
+            (historico) =>
+              historico.user_name === usuarios[i] &&
+              historico.alarma === "Activada"
           ).length,
         });
       }

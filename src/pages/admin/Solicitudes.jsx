@@ -9,6 +9,7 @@ const Solicitudes = () => {
 
   //Añadir modal
   const [solicitud, setSolicitud] = useState([]);
+  const [filterSolicitud, setFilterSolicitud] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [loadingUserInformation, setLoadingUserInformation] = useState(false);
 
@@ -39,6 +40,16 @@ const Solicitudes = () => {
           );
         };
         editUsuario(solicitud.new_password);
+      } else if (solicitud.tipo === "Nueva contraseña") {
+        const editUsuario = async (password, password_coaccion) => {
+          await editarUsuario(
+            solicitud.user_id,
+            { password, password_coaccion },
+            (res) => {},
+            (err) => {}
+          );
+        };
+        editUsuario(solicitud.new_password, solicitud.new_password_coacción);
       } else {
         const getUsuario = async () => {
           const editUsuario = async (keyaccess) => {
@@ -108,6 +119,7 @@ const Solicitudes = () => {
         (resp) => {
           console.log("solicitudes", resp.data);
           setSolicitudes(resp.data);
+          setFilterSolicitud(resp.data);
           setLoadingUserInformation(false);
         },
         (err) => {
@@ -118,6 +130,24 @@ const Solicitudes = () => {
     };
     fetchSolicitudes();
   }, []);
+  useEffect(() => {
+    setLoadingUserInformation(true);
+    const fetchSolicitudes = async () => {
+      await obtenerSolicitudes(
+        (resp) => {
+          console.log("solicitudes", resp.data);
+          setSolicitudes(resp.data);
+          setFilterSolicitud(resp.data);
+          setLoadingUserInformation(false);
+        },
+        (err) => {
+          console.log(err);
+          setLoadingUserInformation(false);
+        }
+      );
+    };
+    fetchSolicitudes();
+  }, [showModal]);
 
   //
   //Check listo for manage access to keys
@@ -132,6 +162,17 @@ const Solicitudes = () => {
   //   setLoadingUserInformation(false);
 
   // }, [solicitudes]);
+
+  const changeHandle = (e) => {
+    console.log("las solicitudes son", solicitudes);
+    setFilterSolicitud(
+      solicitudes.filter(
+        (usuario) =>
+          usuario.user_name.toString().includes(e.target.value.toString()) ||
+          usuario.user_email.toString().includes(e.target.value.toString())
+      )
+    );
+  };
 
   return (
     <div class="bg-white p-8 rounded-md w-full">
@@ -154,11 +195,12 @@ const Solicitudes = () => {
               />
             </svg>
             <input
-              class="bg-gray-50 outline-none ml-1 block "
+              class="bg-gray-50 outline-none  w-64 ml-1 block "
               type="text"
               name=""
               id=""
-              placeholder="Buscar..."
+              onChange={changeHandle}
+              placeholder="Buscar por nombre o correo"
             />
           </div>
         </div>
@@ -196,7 +238,8 @@ const Solicitudes = () => {
                     Tipo:{solicitud.tipo}
                   </h3>
 
-                  {solicitud.tipo === "Cambiar contraseña" ? (
+                  {solicitud.tipo === "Cambiar contraseña" ||
+                  solicitud.tipo === "Nueva contraseña" ? (
                     <></>
                   ) : (
                     <h3 className="text-xl font-semibold">
@@ -279,7 +322,7 @@ const Solicitudes = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {solicitudes.map((solicitud) => {
+                    {filterSolicitud.map((solicitud) => {
                       return (
                         <tr>
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -350,21 +393,6 @@ const Solicitudes = () => {
                     })}
                   </tbody>
                 </table>
-
-                <div class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
-                  <span class="text-xs xs:text-sm text-gray-900">
-                    Showing 1 to 4 of 50 Entries
-                  </span>
-                  <div class="inline-flex mt-2 xs:mt-0">
-                    <button class="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l">
-                      Prev
-                    </button>
-                    &nbsp; &nbsp;
-                    <button class="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r">
-                      Next
-                    </button>
-                  </div>
-                </div>
               </div>
             )}
           </div>

@@ -7,6 +7,7 @@ import Solicitudes from "./pages/admin/Solicitudes";
 import Estadisticas from "./pages/admin/Estadisticas";
 import Perfil from "./pages/users/Perfil";
 import SolicitudesUser from "./pages/users/Solicitudes";
+import HistoricoUser from "./pages/users/Historico";
 import Home from "./pages/Home/Home";
 import PublicLayout from "./layouts/PublicLayout";
 import PrivateLayout from "./layouts/PrivateLayout";
@@ -20,7 +21,7 @@ function App() {
     <Auth0Provider
       domain="proyecto-final-electronica.us.auth0.com"
       clientId="ix6zap0dG5QN7YkmT0unSL0tZH7A8oPk"
-      redirectUri="https://fierce-oasis-98176.herokuapp.com/admin"
+      redirectUri="http://localhost:3000/usuario"
       audience="api-cofre-inteligente-administracion-llaves"
     >
       <div className="">
@@ -91,7 +92,7 @@ function App() {
                   <PrivateLayout>
                     {" "}
                     <PrivateRoute
-                      roleList={["Empleado", "sin rol"]}
+                      roleList={["Empleado", "sin rol", "admin"]}
                       children={<Perfil />}
                     />
                   </PrivateLayout>
@@ -105,6 +106,18 @@ function App() {
                     <PrivateRoute
                       roleList={["Empleado"]}
                       children={<SolicitudesUser />}
+                    />
+                  </PrivateLayout>
+                }
+              />
+              <Route
+                path="/usuario/historial"
+                element={
+                  <PrivateLayout>
+                    {" "}
+                    <PrivateRoute
+                      roleList={["Empleado"]}
+                      children={<HistoricoUser />}
                     />
                   </PrivateLayout>
                 }

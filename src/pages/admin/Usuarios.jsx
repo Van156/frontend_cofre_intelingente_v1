@@ -9,7 +9,7 @@ const Usuarios = () => {
   const [usuario, setUsuario] = useState();
   //Añadir loading
   const [loadingUserInformation, setLoadingUserInformation] = useState(false);
-
+  const [filterUser, setFilterUser] = useState([]);
   const closeModal = (option) => {
     setShowModal((currShowModal) => false);
     console.log("showModal close", showModal);
@@ -27,25 +27,8 @@ const Usuarios = () => {
       if (usuario.keyaccess !== checked) {
         editUsuario(checked);
       }
-      const fetchUsuarios = async () => {
-        setLoadingUserInformation(true);
-        await obtenerUsuarios(
-          (resp) => {
-            setUsuarios(resp.data);
-            setLoadingUserInformation(false);
-          },
-          (err) => {
-            console.log(err);
-            setLoadingUserInformation(false);
-          }
-        );
-      };
-      fetchUsuarios();
     }
   };
-  useEffect(() => {
-    setLoadingUserInformation(false);
-  }, [usuarios]);
 
   const openModal = (user) => {
     setUsuario(user);
@@ -61,8 +44,43 @@ const Usuarios = () => {
       setLoadingUserInformation(true);
       await obtenerUsuarios(
         (resp) => {
-          setUsuarios(resp.data);
-          console.log("Datos usuarios", resp.data);
+          setUsuarios(
+            resp.data.filter(
+              (usuario) => usuario.email !== "elapoamaya@gmail.com"
+            )
+          );
+          setFilterUser(
+            resp.data.filter(
+              (usuario) => usuario.email !== "elapoamaya@gmail.com"
+            )
+          );
+
+          setLoadingUserInformation(false);
+        },
+        (err) => {
+          console.log(err);
+          setLoadingUserInformation(false);
+        }
+      );
+    };
+    fetchUsuarios();
+  }, [showModal]);
+  useEffect(() => {
+    const fetchUsuarios = async () => {
+      setLoadingUserInformation(true);
+      await obtenerUsuarios(
+        (resp) => {
+          setUsuarios(
+            resp.data.filter(
+              (usuario) => usuario.email !== "elapoamaya@gmail.com"
+            )
+          );
+          setFilterUser(
+            resp.data.filter(
+              (usuario) => usuario.email !== "elapoamaya@gmail.com"
+            )
+          );
+
           setLoadingUserInformation(false);
         },
         (err) => {
@@ -77,7 +95,7 @@ const Usuarios = () => {
   //Check listo for manage access to keys
   // State with list of all checked item
   const [checked, setChecked] = useState([]);
-  const checkList = ["1", "2", "3", "4", "5", "6"];
+  const checkList = ["1", "2", "3", "4"];
   // Add/Remove checked item from list
   const handleCheck = (event) => {
     var updatedList = [...checked];
@@ -102,6 +120,19 @@ const Usuarios = () => {
     checked.includes(item) ? "checked-item" : "not-checked-item";
 
   const isSelect = (item) => (checked.includes(item) ? true : false);
+
+  const [busqueda, setBusqueda] = useState("");
+  const changeHandle = (e) => {
+    setBusqueda(e.target.value);
+    console.log("usuarios", usuarios);
+    setFilterUser(
+      usuarios.filter(
+        (usuario) =>
+          usuario.name.toString().includes(e.target.value.toString()) ||
+          usuario.email.toString().includes(e.target.value.toString())
+      )
+    );
+  };
 
   return (
     <div>
@@ -193,11 +224,13 @@ const Usuarios = () => {
                   />
                 </svg>
                 <input
-                  class="bg-gray-50 outline-none ml-1 block "
+                  class="bg-gray-50 outline-none w-64 ml-1 block "
                   type="text"
                   name=""
+                  value={busqueda}
+                  onChange={changeHandle}
                   id=""
-                  placeholder="Buscar..."
+                  placeholder="Buscar por nombre o correo"
                 />
               </div>
             </div>
@@ -227,7 +260,7 @@ const Usuarios = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {usuarios.map((user) => {
+                      {filterUser.map((user) => {
                         return (
                           <tr>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -290,21 +323,6 @@ const Usuarios = () => {
                       })}
                     </tbody>
                   </table>
-
-                  <div class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
-                    <span class="text-xs xs:text-sm text-gray-900">
-                      Showing 1 to 4 of 50 Entries
-                    </span>
-                    <div class="inline-flex mt-2 xs:mt-0">
-                      <button class="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l">
-                        Prev
-                      </button>
-                      &nbsp; &nbsp;
-                      <button class="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r">
-                        Next
-                      </button>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

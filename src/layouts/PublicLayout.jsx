@@ -2,9 +2,9 @@ import React from "react";
 import NavBar from "../components/NavBar";
 const PublicLayout = ({ children }) => {
   return (
-    <div>
+    <div className="h-screen flex overflow-hidden">
       <NavBar />
-      <main className="h-full overflow-y-scroll ">{children}</main>
+      <main className="  ">{children}</main>
     </div>
   );
 };
