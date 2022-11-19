@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //const baseURL = "http://localhost:5000";
-const baseURL = "https://thawing-earth-49122.herokuapp.com/";
+const baseURL = "https://thawing-earth-49122.herokuapp.com";
 
 const getToken = () => {
   return `Bearer ${localStorage.getItem("token")}`;
