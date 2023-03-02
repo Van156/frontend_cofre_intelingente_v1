@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# key access manager app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This page is designed to manage access to the physical keys associated with the smart chest in this project. There are two user roles: admin and client. Admins can track user loans, view statistics related to the chest, and manage key access for each user. Client users can view the keys they currently have access to and request access to additional keys.The general structure of the project is described in the following diagram
 
-## Available Scripts
+## Screens
 
-In the project directory, you can run:
+- Profile:the user can see their role the number of minor faults they have committed when interacting with the chest and the keys they have access to.
+- Dashboard: the admin can see statistics that are considered essential to follow up on loans and incidents in the coffer.
+- Manage users: In this it is possible to manage the access and keys of each user.
+- Manage solicituds:This allows you to manage the different requests made by each user.. 
+- Historic: It is allowed to track all events associated with the chest. 
 
-### `npm start`
+## Screenshots
+<p float="left">
+  <img src="https://drive.google.com/file/d/1D0Pdn1A4RinNslHCMGbJNxbOl8jmhvh6/view?usp=share_link" width="25%" />
+  <img src="https://drive.google.com/file/d/1CucVErC_OoSwBr4jDyn7_u9uqQrGW7sh/view?usp=share_link" width="25%" />
+  <img src="https://drive.google.com/file/d/1VYBFq5FKmz_brA81TSq5i6YhQvd7zu8V/view?usp=share_link" width="25%" />
+<img src="https://drive.google.com/file/d/1n5MhBxTHTJawzJxVkRFZOQZZQ-e1ztUY/view?usp=share_link" width="25%" />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+</p>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+1. Clone the repository
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+git clone https:https://github.com/Van156/frontend_cofre_intelingente_v1
+```
 
-### `npm run build`
+2. Install the dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+yarn install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Run the app:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+yarn run start
+```
+4.Config server:
+Review the following repository https://github.com/Van156/backend-cofre-inteligente.git and follow the indicated steps
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Built With
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [ReactJS](https://reactjs.org/): A JavaScript library for building user interfaces
+- [TailwindsCSS](https://tailwindcss.com/): A utility-first CSS framework .
