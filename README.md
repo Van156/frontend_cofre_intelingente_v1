@@ -7,13 +7,13 @@ This page is designed to manage access to the physical keys associated with the 
 - Profile:the user can see their role the number of minor faults they have committed when interacting with the chest and the keys they have access to.
 - Dashboard: the admin can see statistics that are considered essential to follow up on loans and incidents in the coffer.
 - Manage users: In this it is possible to manage the access and keys of each user.
-- Manage solicituds:This allows you to manage the different requests made by each user.. 
+- Manage solicitudes:This allows you to manage the different requests made by each user.. 
 - Historic: It is allowed to track all events associated with the chest. 
 
 
 
 ## Screenshots
-<p float="left">  
+<p float="center">  
   <img src="https://drive.google.com/uc?export=view&id=1D0Pdn1A4RinNslHCMGbJNxbOl8jmhvh6" width="25%" />
   <img src="https://drive.google.com/uc?export=view&id=1CucVErC_OoSwBr4jDyn7_u9uqQrGW7sh" width="25%" />
   <img src="https://drive.google.com/uc?export=view&id=1VYBFq5FKmz_brA81TSq5i6YhQvd7zu8V" width="25%" />
