@@ -14,10 +14,10 @@ This page is designed to manage access to the physical keys associated with the 
 
 ## Screenshots
 <p float="center">  
-  <img src="https://drive.google.com/uc?export=view&id=1D0Pdn1A4RinNslHCMGbJNxbOl8jmhvh6" width="25%" />
-  <img src="https://drive.google.com/uc?export=view&id=1CucVErC_OoSwBr4jDyn7_u9uqQrGW7sh" width="25%" />
-  <img src="https://drive.google.com/uc?export=view&id=1VYBFq5FKmz_brA81TSq5i6YhQvd7zu8V" width="25%" />
-<img src="https://drive.google.com/uc?export=view&id=1n5MhBxTHTJawzJxVkRFZOQZZQ-e1ztUY" width="25%" />
+  <img src="https://drive.google.com/uc?export=view&id=1D0Pdn1A4RinNslHCMGbJNxbOl8jmhvh6" width="50%" />
+  <img src="https://drive.google.com/uc?export=view&id=1CucVErC_OoSwBr4jDyn7_u9uqQrGW7sh" width="50%" />
+  <img src="https://drive.google.com/uc?export=view&id=1VYBFq5FKmz_brA81TSq5i6YhQvd7zu8V" width="50%" />
+<img src="https://drive.google.com/uc?export=view&id=1n5MhBxTHTJawzJxVkRFZOQZZQ-e1ztUY" width="50%" />
 
 </p>
 
