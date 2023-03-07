@@ -1,6 +1,6 @@
 # key access manager app
 
-This page is designed to manage access to the physical keys associated with the smart chest in this project. There are two user roles: admin and client. Admins can track user loans, view statistics related to the chest, and manage key access for each user. Client users can view the keys they currently have access to and request access to additional keys. The general structure of the project is described in the following diagram
+This page is designed to manage access to the physical keys associated with the smart coffer in this project. There are two user roles: admin and client. Admins can track user loans, view statistics related to the chest, and manage key access for each user. Client users can view the keys they currently have access to and request access to additional keys. The general structure of the project is described in the following diagram
 <img src="https://drive.google.com/uc?export=view&id=1h0Rjqo1vD8ODDTNt0Ery8PJr528rasi4"/>
 ## Screens
 
