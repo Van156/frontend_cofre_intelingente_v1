@@ -1,14 +1,14 @@
 # key access manager app
 
-This page is designed to manage access to the physical keys associated with the smart coffer in this project. There are two user roles: admin and client. Admins can track user loans, view statistics related to the chest, and manage key access for each user. Client users can view the keys they currently have access to and request access to additional keys. The general structure of the project is described in the following diagram
+This page is designed to manage access to the physical keys associated with the smart coffer in this project. There are two user roles: admin and client. Admins can track user loans, view statistics related to the coffer, and manage key access for each user. Client users can view the keys they currently have access to and request access to additional keys. The general structure of the project is described in the following diagram
 <img src="https://drive.google.com/uc?export=view&id=1h0Rjqo1vD8ODDTNt0Ery8PJr528rasi4"/>
 ## Screens
 
-- Profile:the user can see their role the number of minor faults they have committed when interacting with the chest and the keys they have access to.
+- Profile:the user can see their role the number of minor faults they have committed when interacting with the coffer and the keys they have access to.
 - Dashboard: the admin can see statistics that are considered essential to follow up on loans and incidents in the coffer.
 - Manage users: In this it is possible to manage the access and keys of each user.
-- Manage solicitudes:This allows you to manage the different requests made by each user.. 
-- Historic: It is allowed to track all events associated with the chest. 
+- Manage solicitudes:This allows you to manage the different requests made by each user. 
+- Historic: It is allowed to track all events associated with the coffer. 
 
 
 
